@@ -1,0 +1,432 @@
+{
+  "lastUpdated": "2026-06-04T00:00:00Z",
+  "tasks": [
+    {
+      "assignedTo": "medflow-director",
+      "createdAt": "2026-03-07T18:37:34-05:00",
+      "description": "Analyze project structure, dependencies, and current status",
+      "id": "initial-analysis-1",
+      "output": "Business inspection completed by CEO agent. Project analysis shows: Go backend, PostgreSQL/Redis, medical practice management system. Current state: Phase 2 Verification (62% complete). Priority 1 financial gaps identified as critical business risk. Strategic action plan created focusing on financial compliance, revenue operations, and patient management.",
+      "priority": "medium",
+      "project": "medflow",
+      "status": "completed",
+      "title": "Initial project analysis",
+      "updatedAt": "2026-03-08T03:16:54.169Z"
+    },
+    {
+      "assignedTo": "medflow-senior-dev",
+      "createdAt": 1772928009.8690653,
+      "description": "Perform comprehensive analysis of medflow project structure, technologies, test frameworks, and setup test environment. Use scan_project tool from MCP server.",
+      "id": "discovery-medflow-1772928009",
+      "output": "Project discovery completed by CEO agent. Comprehensive analysis performed: 1) Technology stack identified (Go, PostgreSQL, Redis), 2) Project structure mapped, 3) Gap analysis reviewed (78+ features), 4) Roadmap assessed (14-week timeline), 5) Business risks identified (financial compliance, revenue operations). Ready for execution phase with prioritized action plan.",
+      "priority": "high",
+      "project": "medflow",
+      "status": "completed",
+      "tags": [
+        "discovery",
+        "analysis",
+        "setup"
+      ],
+      "title": "Project Discovery and Analysis",
+      "updatedAt": "2026-03-08T03:17:00.870Z"
+    },
+    {
+      "assignedTo": "medflow-backend",
+      "createdAt": "2026-03-07T22:22:12.367598",
+      "description": "Finish pharmacy entity definitions and repository implementations in backend/internal/domain/pharmacy/",
+      "id": "task-354836a691ac",
+      "priority": "high",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "pharmacy",
+        "backend",
+        "domain"
+      ],
+      "title": "Complete pharmacy domain entities",
+      "updatedAt": "2026-03-07T22:22:12.367637"
+    },
+    {
+      "assignedTo": "medflow-backend",
+      "createdAt": "2026-03-07T22:22:12.367649",
+      "description": "Complete pharmacy_usecase.go and pharmacy_interfaces.go with business logic",
+      "id": "task-62843e58278a",
+      "priority": "high",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "pharmacy",
+        "backend",
+        "usecase"
+      ],
+      "title": "Implement pharmacy use cases",
+      "updatedAt": "2026-03-07T22:22:12.367651"
+    },
+    {
+      "assignedTo": "medflow-senior-dev",
+      "createdAt": "2026-03-07T22:22:12.367657",
+      "description": "Apply migration 00074_create_pharmacy_pos_tables.sql and verify schema",
+      "id": "task-9c6d9273f290",
+      "priority": "high",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "database",
+        "migration",
+        "pharmacy"
+      ],
+      "title": "Apply database migrations",
+      "updatedAt": "2026-03-07T22:22:12.367658"
+    },
+    {
+      "assignedTo": "medflow-backend",
+      "createdAt": "2026-03-07T22:22:12.367663",
+      "description": "Finish patient_merge_usecase.go implementation and testing",
+      "id": "task-93ccf7d50303",
+      "priority": "medium",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "patient",
+        "merge",
+        "backend"
+      ],
+      "title": "Complete patient merge use case",
+      "updatedAt": "2026-03-07T22:22:12.367664"
+    },
+    {
+      "assignedTo": "medflow-qa",
+      "createdAt": "2026-03-07T22:22:12.367669",
+      "description": "Create unit and integration tests for patient merge feature",
+      "id": "task-06b4be8354d9",
+      "priority": "medium",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "patient",
+        "merge",
+        "testing"
+      ],
+      "title": "Test patient merge functionality",
+      "updatedAt": "2026-03-07T22:22:12.367670"
+    },
+    {
+      "assignedTo": "medflow-frontend",
+      "createdAt": "2026-03-07T22:22:12.367677",
+      "description": "Analyze frontend/playwright-report/ and fix any failing tests",
+      "id": "task-191f852e1f5c",
+      "priority": "medium",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "frontend",
+        "testing",
+        "playwright"
+      ],
+      "title": "Review Playwright test reports",
+      "updatedAt": "2026-03-07T22:22:12.367678"
+    },
+    {
+      "assignedTo": "medflow-director",
+      "createdAt": "2026-03-07T22:22:12.367682",
+      "description": "Update .agent/workflows/ and ensure all agents have proper documentation",
+      "id": "task-5ff70d79f4e2",
+      "priority": "low",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "documentation",
+        "agents",
+        "framework"
+      ],
+      "title": "Configure agent framework documentation",
+      "updatedAt": "2026-03-07T22:22:12.367683"
+    },
+    {
+      "assignedTo": "medflow-senior-dev",
+      "createdAt": "2026-03-07T22:22:12.367687",
+      "description": "Analyze git status, create meaningful commits for completed work",
+      "id": "task-215328ed31c2",
+      "priority": "medium",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "git",
+        "version-control",
+        "workflow"
+      ],
+      "title": "Review and commit uncommitted changes",
+      "updatedAt": "2026-03-07T22:22:12.367688"
+    },
+    {
+      "assignedTo": "medflow-ceo",
+      "createdAt": "2026-03-07T22:22:12.367692",
+      "description": "Ensure pharmacy domain implementation meets HIPAA requirements for PHI handling",
+      "id": "task-56e14ed7bfbe",
+      "priority": "high",
+      "project": "medflow",
+      "status": "completed",
+      "tags": [
+        "compliance",
+        "hipaa",
+        "security"
+      ],
+      "title": "HIPAA compliance review for pharmacy features",
+      "updatedAt": "2026-03-07T22:22:12.367693"
+    },
+    {
+      "assignedTo": "medflow-backend",
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "ALTER TABLE facilities RENAME TO sedes. Actualizar FKs. Spec: docs/MedNext v1.2/Especificaciones/Req-01-Sede-PuntoAtencion.md",
+      "id": "v12-INF-1.1.1",
+      "priority": "critical",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "migration",
+        "sede"
+      ],
+      "title": "[v1.2/F1] Migracion DB: Facility → Sede"
+    },
+    {
+      "assignedTo": "medflow-backend",
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "Expand service_units table con type, capacity, schedule_template, is_shared. Spec: Req-01-Sede-PuntoAtencion.md",
+      "id": "v12-INF-1.1.2",
+      "priority": "critical",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "migration",
+        "service-unit"
+      ],
+      "title": "[v1.2/F1] Migracion DB: ServiceUnit v2"
+    },
+    {
+      "assignedTo": "medflow-backend",
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "service_unit_professionals + physical_resources + service_unit_resources. Spec: Req-02-Unidad-Asistencial.md",
+      "id": "v12-INF-1.1.3",
+      "priority": "critical",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "migration"
+      ],
+      "title": "[v1.2/F1] Migracion DB: Bridge tables"
+    },
+    {
+      "assignedTo": "medflow-backend",
+      "blockedBy": [
+        "v12-INF-1.1.1"
+      ],
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "Rename Facility to Sede throughout backend. ~180 nodes in graphify communities #1,#4,#32,#48. Blocked by INF-1.1.1.",
+      "id": "v12-BK-1.1.1",
+      "priority": "high",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "refactor",
+        "sede"
+      ],
+      "title": "[v1.2/F1] Refactor Facility → Sede (domain+repo+handler)"
+    },
+    {
+      "assignedTo": "medflow-backend",
+      "blockedBy": [
+        "v12-INF-1.1.2"
+      ],
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "Expand from 38 nodes: type, capacity, schedule, M:N professionals. Blocked by INF-1.1.2.",
+      "id": "v12-BK-1.1.2",
+      "priority": "high",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "domain",
+        "service-unit"
+      ],
+      "title": "[v1.2/F1] Expand ServiceUnit domain (38→full entity)"
+    },
+    {
+      "assignedTo": "medflow-backend",
+      "blockedBy": [
+        "v12-INF-1.1.3",
+        "v12-BK-1.1.2"
+      ],
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "Bridge table repo + usecase for professional assignment. Blocked by INF-1.1.3 + BK-1.1.2.",
+      "id": "v12-BK-1.1.3",
+      "priority": "high",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "domain"
+      ],
+      "title": "[v1.2/F1] ServiceUnit-Professionals M:N"
+    },
+    {
+      "assignedTo": "medflow-backend",
+      "blockedBy": [
+        "v12-INF-1.1.3"
+      ],
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "Domain entity + repo + usecase + handler for laser/salas/equipos. Blocked by INF-1.1.3.",
+      "id": "v12-BK-1.1.4",
+      "priority": "high",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "domain",
+        "resources"
+      ],
+      "title": "[v1.2/F1] Physical Resources CRUD"
+    },
+    {
+      "assignedTo": "medflow-senior-dev",
+      "blockedBy": [
+        "v12-BK-1.1.3",
+        "v12-BK-1.1.4"
+      ],
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "Prevent double-booking professionals + resources. Transactional check. Blocked by BK-1.1.3 + BK-1.1.4.",
+      "id": "v12-BK-1.1.5",
+      "priority": "high",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "business-logic"
+      ],
+      "title": "[v1.2/F1] Availability Service (conflict detection)"
+    },
+    {
+      "assignedTo": "medflow-backend",
+      "blockedBy": [
+        "v12-BK-1.1.1"
+      ],
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "GET/POST/PATCH/DELETE /api/v1/sedes. Blocked by BK-1.1.1.",
+      "id": "v12-BK-1.1.6",
+      "priority": "medium",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "api"
+      ],
+      "title": "[v1.2/F1] API Endpoints: Sede CRUD"
+    },
+    {
+      "assignedTo": "medflow-backend",
+      "blockedBy": [
+        "v12-BK-1.1.2"
+      ],
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "GET/POST/PATCH/DELETE /api/v1/sedes/:id/unidades + professional/resource assignment. Blocked by BK-1.1.2.",
+      "id": "v12-BK-1.1.7",
+      "priority": "medium",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "api"
+      ],
+      "title": "[v1.2/F1] API Endpoints: UnidadAsistencial CRUD"
+    },
+    {
+      "assignedTo": "medflow-frontend",
+      "blockedBy": [
+        "v12-BK-1.1.6"
+      ],
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "Interface TS + SignalStore. Blocked by BK-1.1.6.",
+      "id": "v12-FE-1.1.1",
+      "priority": "medium",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "frontend"
+      ],
+      "title": "[v1.2/F1] Frontend: Modelo Sede + SignalStore"
+    },
+    {
+      "assignedTo": "medflow-frontend",
+      "blockedBy": [
+        "v12-FE-1.1.1"
+      ],
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "ListComponent + CreateModal + EditModal. Standalone, OnPush. Blocked by FE-1.1.1.",
+      "id": "v12-FE-1.1.2",
+      "priority": "medium",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "frontend",
+        "admin"
+      ],
+      "title": "[v1.2/F1] Frontend: Admin Sede CRUD"
+    },
+    {
+      "assignedTo": "medflow-frontend",
+      "blockedBy": [
+        "v12-BK-1.1.7",
+        "v12-FE-1.1.1"
+      ],
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "List filtered by sede + professional/resource assignment. Blocked by BK-1.1.7 + FE-1.1.1.",
+      "id": "v12-FE-1.1.3",
+      "priority": "medium",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "frontend",
+        "admin"
+      ],
+      "title": "[v1.2/F1] Frontend: Admin Unidad Asistencial CRUD"
+    },
+    {
+      "assignedTo": "medflow-frontend",
+      "blockedBy": [
+        "v12-FE-1.1.1"
+      ],
+      "createdAt": "2026-06-04T00:00:00Z",
+      "description": "Dropdown global de sede. Blocked by FE-1.1.1.",
+      "id": "v12-FE-1.1.5",
+      "priority": "medium",
+      "project": "medflow",
+      "status": "pending",
+      "tags": [
+        "v1.2",
+        "fase-1",
+        "frontend"
+      ],
+      "title": "[v1.2/F1] Frontend: Selector Sede en topbar"
+    }
+  ],
+  "version": "2.0"
+}

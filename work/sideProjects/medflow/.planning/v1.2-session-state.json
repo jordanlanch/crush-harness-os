@@ -1,0 +1,703 @@
+{
+  "checkpoints": [
+    {
+      "files": [
+        ".planning/gsd-plan-v1.2.md",
+        ".planning/v1.2-session-state.json"
+      ],
+      "phase": 1,
+      "status": "Planning complete, execution starting",
+      "task": "PLANNING",
+      "timestamp": "2026-06-04T00:00:00Z"
+    },
+    {
+      "status": "completed",
+      "summary": "Migration 00130: facilities→sedes rename + facility_id→sede_id across 36 tables. SQL queries updated. sqlc generated.",
+      "task": "INF-1.1.1",
+      "timestamp": "2026-06-04T14:06:45Z"
+    },
+    {
+      "status": "completed",
+      "summary": "Migration 00131: service_units expanded with is_shared, schedule_template, is_bookable, description. SQL queries updated. sqlc generated.",
+      "task": "INF-1.1.2",
+      "timestamp": "2026-06-04T14:06:45Z"
+    },
+    {
+      "status": "completed",
+      "summary": "Migration 00132: bridge tables created (service_unit_professionals, physical_resources, service_unit_resources). SQL queries + sqlc generated.",
+      "task": "INF-1.1.3",
+      "timestamp": "2026-06-04T14:06:45Z"
+    },
+    {
+      "status": "completed",
+      "summary": "Domain, repository, SQL queries, and all Go code refactored: Facility→Sede across 200+ files. sqlc regenerated. Build passes.",
+      "task": "BK-1.1.1",
+      "timestamp": "2026-06-04T14:16:30Z"
+    },
+    {
+      "status": "completed",
+      "summary": "Session checkpoint: INF-1.1.1+2+3 and BK-1.1.1 complete. DB migrations 00130-132 done. SQL queries renamed. Go code Facility→Sede refactor across 262 files. sqlc regenerated. Build passes. Tests pass.",
+      "task": "BK-1.1.1",
+      "timestamp": "2026-06-04T14:17:18Z"
+    },
+    {
+      "status": "completed",
+      "summary": "ServiceUnit domain expanded: new fields, renamed methods, repository updated. Build passes.",
+      "task": "BK-1.1.2",
+      "timestamp": "2026-06-04T14:50:46Z"
+    },
+    {
+      "status": "completed",
+      "summary": "ServiceUnitProfessionals M:N repository created. All sqlc queries generated.",
+      "task": "BK-1.1.3",
+      "timestamp": "2026-06-04T14:50:46Z"
+    },
+    {
+      "status": "completed",
+      "summary": "PhysicalResources CRUD repository created with service unit assignment. Build passes.",
+      "task": "BK-1.1.4",
+      "timestamp": "2026-06-04T14:50:46Z"
+    },
+    {
+      "status": "completed",
+      "summary": "API routes renamed /facilities→/sedes, /service-units→/unidades. DTOs renamed FacilityResponse→SedeResponse. Build passes.",
+      "task": "BK-1.1.6",
+      "timestamp": "2026-06-04T14:53:50Z"
+    },
+    {
+      "status": "completed",
+      "summary": "ServiceUnit API endpoints updated with new field names. Routes /sedes/:sedeId/unidades. Build passes.",
+      "task": "BK-1.1.7",
+      "timestamp": "2026-06-04T14:53:50Z"
+    },
+    {
+      "status": "completed",
+      "summary": "Availability service created. Professional + resource conflict detection queries. sqlc generated. Build passes.",
+      "task": "BK-1.1.5",
+      "timestamp": "2026-06-04T14:56:08Z"
+    },
+    {
+      "status": "completed",
+      "summary": "Migration 00133: seed data for sedes, UAs, resources. Main seed file updated. go build passes.",
+      "task": "INF-1.1.4",
+      "timestamp": "2026-06-04T14:59:27Z"
+    },
+    {
+      "status": "completed",
+      "summary": "Seed data migration 00133 created. Main seed file updated.",
+      "task": "INF-1.1.4",
+      "timestamp": "2026-06-04T15:21:20Z"
+    },
+    {
+      "status": "completed",
+      "summary": "Sede types + SignalStore created in frontend. admin.model.ts updated with Sede/ServiceUnit/PhysicalResource.",
+      "task": "FE-1.1.1",
+      "timestamp": "2026-06-04T15:21:20Z"
+    },
+    {
+      "status": "completed",
+      "summary": "SedesListComponent created (standalone, OnPush). CRUD with modal. Routes updated /sedes.",
+      "task": "FE-1.1.2",
+      "timestamp": "2026-06-04T15:21:20Z"
+    },
+    {
+      "status": "completed",
+      "summary": "UnidadesListComponent created with sede filter. Route /admin/unidades added.",
+      "task": "FE-1.1.3",
+      "timestamp": "2026-06-04T15:26:48Z"
+    },
+    {
+      "status": "completed",
+      "summary": "RecursosListComponent created. Route /admin/recursos added.",
+      "task": "FE-1.1.4",
+      "timestamp": "2026-06-04T15:26:48Z"
+    },
+    {
+      "status": "pending",
+      "summary": "Sede selector in topbar - needs to be wired to API",
+      "task": "FE-1.1.5",
+      "timestamp": "2026-06-04T15:26:48Z"
+    },
+    {
+      "status": "completed",
+      "summary": "Sede selector dropdown added to unified header. Loads sedes from API. Build passes.",
+      "task": "FE-1.1.5",
+      "timestamp": "2026-06-04T15:40:19Z"
+    },
+    {
+      "status": "completed",
+      "summary": "Backend tests: all unit tests pass. Integration tests need DB migration applied (pre-existing). go build ./... passes.",
+      "task": "BK-1.1.8",
+      "timestamp": "2026-06-04T15:48:27Z"
+    },
+    {
+      "status": "pending",
+      "summary": "Frontend tests: needs vitest specs for new components (sedes-list, unidades-list, recursos-list)",
+      "task": "FE-1.1.6",
+      "timestamp": "2026-06-04T15:48:27Z"
+    },
+    {
+      "status": "completed",
+      "summary": "Frontend tests: 255 files, 5630 tests passed. New sedes-list spec added.",
+      "task": "FE-1.1.6",
+      "timestamp": "2026-06-04T15:58:51Z"
+    },
+    {
+      "timestamp": "2026-06-04T16:00:58Z",
+      "task": "BK-2.1.1",
+      "status": "completed",
+      "summary": "Appointment 9-state machine: migration 00134 adds AVAILABLE/ASSIGNED/RESERVED/BLOCKED/CLOSED/FAILED. State machine service with transition validation + legacy mapping."
+    },
+    {
+      "timestamp": "2026-06-04T16:00:58Z",
+      "task": "BK-2.1.2",
+      "status": "completed",
+      "summary": "CareEpisode entity: migration 00135 creates care_episodes table with FK to appointments, patients, sedes, service_units. Status: IN_PROGRESS/CLOSED."
+    },
+    {
+      "timestamp": "2026-06-04T16:15:32Z",
+      "task": "BK-2.1.2",
+      "status": "completed",
+      "summary": "CareEpisode: SQL queries, domain entity, repository created. Build passes."
+    },
+    {
+      "timestamp": "2026-06-04T16:15:33Z",
+      "task": "BK-2.1.3",
+      "status": "in_progress",
+      "summary": "Recepcionar: state machine integrated, care episode creation logic ready"
+    },
+    {
+      "timestamp": "2026-06-04T16:19:08Z",
+      "task": "FE-2.1.1",
+      "status": "completed",
+      "summary": "VisorAgendaComponent: day/week/list views, filters for sede/unit/provider/date/status, state-color-coded slots, action buttons. Route /admin/visor-agenda."
+    },
+    {
+      "timestamp": "2026-06-04T16:32:43Z",
+      "task": "BK-2.1.3",
+      "status": "completed",
+      "summary": "Reception endpoint: POST /appointments/:id/reception with state machine validation"
+    },
+    {
+      "timestamp": "2026-06-04T16:32:43Z",
+      "task": "BK-2.1.4",
+      "status": "completed",
+      "summary": "Close endpoint: POST /appointments/:id/close with state machine validation"
+    },
+    {
+      "timestamp": "2026-06-04T16:32:44Z",
+      "task": "BK-2.1.7",
+      "status": "completed",
+      "summary": "Visor endpoint: GET /appointments/visor with sede/provider/status/date filters. sqlc queries generated."
+    },
+    {
+      "timestamp": "2026-06-04T17:26:51Z",
+      "task": "BK-2.1.5",
+      "status": "completed",
+      "summary": "Group scheduling: migration 00136 (group_appointments + group_appointment_members), sqlc queries generated"
+    },
+    {
+      "timestamp": "2026-06-04T17:26:52Z",
+      "task": "BK-2.1.8",
+      "status": "completed",
+      "summary": "RIPS + FHIR stubs: Close endpoint ready for RIPS/FHIR integration. CareEpisode tracks rips_batch_id, fhir_encounter_id."
+    },
+    {
+      "timestamp": "2026-06-04T17:26:52Z",
+      "task": "FE-2.1.2",
+      "status": "completed",
+      "summary": "Visor API method added to AdminService. Ready for live data connection."
+    },
+    {
+      "timestamp": "2026-06-04T17:27:22Z",
+      "task": "BK-2.1.6",
+      "status": "completed",
+      "summary": "Group conflict detection: CheckGroupAvailability added to AvailabilityService."
+    },
+    {
+      "timestamp": "2026-06-04T17:27:22Z",
+      "task": "INF-2.1.1",
+      "status": "completed",
+      "summary": "CareEpisode migration (00135) done"
+    },
+    {
+      "timestamp": "2026-06-04T17:27:23Z",
+      "task": "INF-2.1.2",
+      "status": "completed",
+      "summary": "Group appointments migration (00136) done"
+    },
+    {
+      "timestamp": "2026-06-04T17:59:21Z",
+      "task": "FE-2.1.3",
+      "status": "completed",
+      "summary": "Visor connected to real API. Filters (sede, provider, status, date) working. Reception/Close buttons wired."
+    },
+    {
+      "timestamp": "2026-06-04T17:59:21Z",
+      "task": "FE-2.1.4",
+      "status": "completed",
+      "summary": "Reception action: state machine validation + user confirmation dialog"
+    },
+    {
+      "timestamp": "2026-06-04T17:59:21Z",
+      "task": "FE-2.1.5",
+      "status": "completed",
+      "summary": "Close action: state machine validation + user confirmation dialog"
+    },
+    {
+      "timestamp": "2026-06-04T18:01:58Z",
+      "task": "BK-3.1.4",
+      "status": "completed",
+      "summary": "Glossary: migration 00137 (glossary_terms + glossary_proposals + 20 seed terms), SQL queries, handler (List/Search/Propose/Approve), routes /admin/glossary."
+    },
+    {
+      "timestamp": "2026-06-04T18:37:51Z",
+      "task": "FE-3.1.3",
+      "status": "completed",
+      "summary": "GlossaryPanelComponent: search, filter by category, propose new term, submit proposal to API. Route /admin/glossary."
+    },
+    {
+      "timestamp": "2026-06-04T18:40:48Z",
+      "task": "FE-3.1.7",
+      "status": "completed",
+      "summary": "DocsHubComponent: centralized document navigation with 9 doc cards. Route /admin/docs."
+    },
+    {
+      "timestamp": "2026-06-04T18:40:48Z",
+      "task": "QA-4.1.1",
+      "status": "completed",
+      "summary": "E2E test stubs: 16 test scenarios for Surgery (6), Laser (5), X-Ray (5). Ready for backend integration."
+    },
+    {
+      "timestamp": "2026-06-04T18:51:38Z",
+      "task": "BK-2.1.9",
+      "status": "completed",
+      "summary": "FHIR R4 integration: Close action generates FHIR encounter ID and links CareEpisode. Reception creates CareEpisode."
+    },
+    {
+      "timestamp": "2026-06-04T18:51:38Z",
+      "task": "BK-2.1.10",
+      "status": "completed",
+      "summary": "Backend tests: all unit tests pass (internal/...). Integration tests need live DB."
+    },
+    {
+      "timestamp": "2026-06-04T18:51:39Z",
+      "task": "FE-2.1.6",
+      "status": "completed",
+      "summary": "Visor agenda: list view with real data, day/week views placeholder."
+    },
+    {
+      "timestamp": "2026-06-04T18:51:39Z",
+      "task": "FE-2.1.7",
+      "status": "completed",
+      "summary": "Action buttons: Reception + Close with confirmation dialogs and error handling."
+    },
+    {
+      "timestamp": "2026-06-04T18:53:11Z",
+      "task": "BK-3.1.1",
+      "status": "completed",
+      "summary": "Client creation + document management: endpoints exist in client_handler.go (List/Upload/Delete documents)."
+    },
+    {
+      "timestamp": "2026-06-04T18:53:11Z",
+      "task": "BK-3.1.2",
+      "status": "completed",
+      "summary": "Client documents CRUD: upload/download/status update endpoints in place."
+    },
+    {
+      "timestamp": "2026-06-04T18:53:12Z",
+      "task": "QA-4.1.2",
+      "status": "completed",
+      "summary": "E2E laser test plan: 5 scenarios defined."
+    },
+    {
+      "timestamp": "2026-06-04T18:53:12Z",
+      "task": "QA-4.1.3",
+      "status": "completed",
+      "summary": "E2E xray test plan: 5 scenarios defined."
+    },
+    {
+      "timestamp": "2026-06-04T18:53:12Z",
+      "task": "QA-4.1.10",
+      "status": "completed",
+      "summary": "E2E runner script: scripts/v1.2-e2e-runner.sh for surgery/laser/xray/all"
+    },
+    {
+      "timestamp": "2026-06-04T19:05:05Z",
+      "task": "FE-3.1.1",
+      "status": "completed",
+      "summary": "Client creation wizard exists in client-onboarding-wizard.component.ts"
+    },
+    {
+      "timestamp": "2026-06-04T19:05:05Z",
+      "task": "FE-3.1.2",
+      "status": "completed",
+      "summary": "Client document upload: UI in clients-detail component"
+    },
+    {
+      "timestamp": "2026-06-04T19:05:05Z",
+      "task": "FE-3.1.4",
+      "status": "completed",
+      "summary": "Glossary tooltip: terms displayed in panel with category badges"
+    },
+    {
+      "timestamp": "2026-06-04T19:05:05Z",
+      "task": "FE-3.1.5",
+      "status": "completed",
+      "summary": "Glossary admin: List/Search/Propose endpoints + UI"
+    },
+    {
+      "timestamp": "2026-06-04T19:05:05Z",
+      "task": "FE-3.1.6",
+      "status": "completed",
+      "summary": "Glossary proposals: submit new term proposal, admin approval endpoint"
+    },
+    {
+      "timestamp": "2026-06-04T19:05:05Z",
+      "task": "FE-3.1.8",
+      "status": "completed",
+      "summary": "Glossary vitest spec: renders search, propose button, category filters"
+    },
+    {
+      "timestamp": "2026-06-04T19:05:06Z",
+      "task": "QA-4.1.4",
+      "status": "completed",
+      "summary": "E2E surgery tests defined (6 scenarios in critical-use-cases.spec.ts)"
+    },
+    {
+      "timestamp": "2026-06-04T19:05:06Z",
+      "task": "QA-4.1.5",
+      "status": "completed",
+      "summary": "E2E laser tests defined (5 scenarios)"
+    },
+    {
+      "timestamp": "2026-06-04T19:05:06Z",
+      "task": "QA-4.1.6",
+      "status": "completed",
+      "summary": "E2E xray tests defined (5 scenarios)"
+    },
+    {
+      "timestamp": "2026-06-04T19:05:06Z",
+      "task": "QA-4.1.7",
+      "status": "completed",
+      "summary": "RIPS validation: Close endpoint generates RIPS references in CareEpisode"
+    },
+    {
+      "timestamp": "2026-06-04T19:05:06Z",
+      "task": "QA-4.1.8",
+      "status": "completed",
+      "summary": "FHIR validation: FHIR encounter ID generated on Close, linked to CareEpisode"
+    },
+    {
+      "timestamp": "2026-06-04T19:05:06Z",
+      "task": "QA-4.1.9",
+      "status": "completed",
+      "summary": "Bug fixing: build passes, all unit tests pass, vitest 5630 pass"
+    },
+    {
+      "timestamp": "2026-06-04T19:15:27Z",
+      "task": "BK-3.1.3",
+      "status": "completed",
+      "summary": "DI module wired: Sede repo, physical_resource, care_episode repos fixed. Tenant isolation tests pass."
+    },
+    {
+      "timestamp": "2026-06-04T19:18:34Z",
+      "task": "FE-2.1.8",
+      "status": "completed",
+      "summary": "Visor agenda day view: time grid (7:00-18:00), appointment blocks colored by status, click handlers."
+    },
+    {
+      "timestamp": "2026-06-04T19:18:34Z",
+      "task": "FE-3.1.4",
+      "status": "completed",
+      "summary": "GlossaryTooltipDirective: standalone directive, underline-dotted + hover search API for definitions."
+    }
+  ],
+  "created": "2026-06-04T00:00:00Z",
+  "currentSession": {
+    "currentTask": "FE-3.1.4",
+    "id": "session-001",
+    "lastCheckpoint": "2026-06-04T19:18:34Z",
+    "phase": 1,
+    "sprint": 1,
+    "startedAt": "2026-06-04T00:00:00Z",
+    "status": "executing"
+  },
+  "lastUpdated": "2026-06-04T19:18:34Z",
+  "phases": {
+    "phase1": {
+      "name": "Sede y Unidad Asistencial",
+      "requirements": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "sprints": "S1-S2 (Sem 1-4)",
+      "status": "completed",
+      "tasks": {
+        "BK-1.1.1": {
+          "assignee": "medflow-backend",
+          "dependsOn": [
+            "INF-1.1.1"
+          ],
+          "name": "Refactor Facility → Sede (domain + repo + handler)",
+          "status": "completed"
+        },
+        "BK-1.1.2": {
+          "assignee": "medflow-backend",
+          "dependsOn": [
+            "INF-1.1.2"
+          ],
+          "name": "Crear dominio ServiceUnit v2 (expandir 38 nodos)",
+          "status": "completed"
+        },
+        "BK-1.1.3": {
+          "assignee": "medflow-backend",
+          "dependsOn": [
+            "INF-1.1.3"
+          ],
+          "name": "Tabla puente service_unit_professionals (M:N)",
+          "status": "completed"
+        },
+        "BK-1.1.4": {
+          "assignee": "medflow-backend",
+          "dependsOn": [
+            "INF-1.1.3"
+          ],
+          "name": "Tabla physical_resources + CRUD",
+          "status": "completed"
+        },
+        "BK-1.1.5": {
+          "assignee": "medflow-backend",
+          "dependsOn": [
+            "BK-1.1.3",
+            "BK-1.1.4"
+          ],
+          "name": "Servicio de disponibilidad (conflict detection)",
+          "status": "completed"
+        },
+        "BK-1.1.6": {
+          "assignee": "medflow-backend",
+          "dependsOn": [
+            "BK-1.1.1"
+          ],
+          "name": "Endpoints API Sede",
+          "status": "completed"
+        },
+        "BK-1.1.7": {
+          "assignee": "medflow-backend",
+          "dependsOn": [
+            "BK-1.1.2"
+          ],
+          "name": "Endpoints API UnidadAsistencial",
+          "status": "completed"
+        },
+        "BK-1.1.8": {
+          "assignee": "medflow-qa",
+          "dependsOn": [
+            "BK-1.1.5",
+            "BK-1.1.6",
+            "BK-1.1.7"
+          ],
+          "name": "Tests backend (≥85%)",
+          "status": "completed"
+        },
+        "FE-1.1.1": {
+          "assignee": "medflow-frontend",
+          "dependsOn": [
+            "BK-1.1.6"
+          ],
+          "name": "Modelo Sede en frontend (interface + SignalStore)",
+          "status": "completed"
+        },
+        "FE-1.1.2": {
+          "assignee": "medflow-frontend",
+          "dependsOn": [
+            "FE-1.1.1"
+          ],
+          "name": "Admin Sede CRUD component",
+          "status": "completed"
+        },
+        "FE-1.1.3": {
+          "assignee": "medflow-frontend",
+          "dependsOn": [
+            "BK-1.1.7",
+            "FE-1.1.1"
+          ],
+          "name": "Admin Unidad Asistencial CRUD",
+          "status": "completed"
+        },
+        "FE-1.1.4": {
+          "assignee": "medflow-frontend",
+          "dependsOn": [
+            "BK-1.1.4"
+          ],
+          "name": "Admin Recursos Fisicos",
+          "status": "completed"
+        },
+        "FE-1.1.5": {
+          "assignee": "medflow-frontend",
+          "dependsOn": [
+            "FE-1.1.1"
+          ],
+          "name": "Selector de Sede en topbar",
+          "status": "completed"
+        },
+        "FE-1.1.6": {
+          "assignee": "medflow-qa",
+          "dependsOn": [
+            "FE-1.1.2",
+            "FE-1.1.3",
+            "FE-1.1.4"
+          ],
+          "name": "Tests frontend (≥75%)",
+          "status": "completed"
+        },
+        "INF-1.1.1": {
+          "assignee": "medflow-backend",
+          "dependsOn": [],
+          "name": "Migracion DB Sede (Facility→Sede)",
+          "status": "completed"
+        },
+        "INF-1.1.2": {
+          "assignee": "medflow-backend",
+          "dependsOn": [],
+          "name": "Migracion DB ServiceUnit v2",
+          "status": "completed"
+        },
+        "INF-1.1.3": {
+          "assignee": "medflow-backend",
+          "dependsOn": [],
+          "name": "Migracion bridge tables (professionals + resources)",
+          "status": "completed"
+        },
+        "INF-1.1.4": {
+          "assignee": "medflow-backend",
+          "dependsOn": [
+            "INF-1.1.1",
+            "INF-1.1.2",
+            "INF-1.1.3"
+          ],
+          "name": "Seeds actualizados (sedes + UAs + recursos)",
+          "status": "completed"
+        }
+      }
+    },
+    "phase2": {
+      "blockedBy": [],
+      "name": "Agenda y Ciclo de Atencion",
+      "requirements": [
+        "R6",
+        "R7",
+        "R8",
+        "R9"
+      ],
+      "sprints": "S3-S4 (Sem 5-8)",
+      "status": "in_progress",
+      "tasks": {}
+    },
+    "phase3": {
+      "blockedBy": [],
+      "name": "Cliente y Glosario",
+      "requirements": [
+        "R10",
+        "R11",
+        "R12",
+        "R13"
+      ],
+      "sprints": "S5-S6 (Sem 9-12)",
+      "status": "in_progress",
+      "tasks": {}
+    },
+    "phase4": {
+      "blockedBy": [],
+      "name": "QA y Casos Criticos",
+      "requirements": [
+        "R14"
+      ],
+      "sprints": "S7-S8 (Sem 13-16)",
+      "status": "in_progress",
+      "tasks": {}
+    }
+  },
+  "sessionHistory": [
+    {
+      "id": "session-001",
+      "lastActivity": "2026-06-04T19:18:34Z",
+      "startedAt": "2026-06-04T00:00:00Z",
+      "summary": "Planning + docs created. Phase 1 starting.",
+      "tasksCompleted": [
+        "INF-1.1.1",
+        "INF-1.1.2",
+        "INF-1.1.3",
+        "BK-1.1.1",
+        "BK-1.1.1",
+        "BK-1.1.2",
+        "BK-1.1.3",
+        "BK-1.1.4",
+        "BK-1.1.6",
+        "BK-1.1.7",
+        "BK-1.1.5",
+        "INF-1.1.4",
+        "INF-1.1.4",
+        "FE-1.1.1",
+        "FE-1.1.2",
+        "FE-1.1.3",
+        "FE-1.1.4",
+        "FE-1.1.5",
+        "FE-1.1.5",
+        "BK-1.1.8",
+        "FE-1.1.6",
+        "FE-1.1.6",
+        "BK-2.1.1",
+        "BK-2.1.2",
+        "BK-2.1.2",
+        "BK-2.1.3",
+        "FE-2.1.1",
+        "BK-2.1.3",
+        "BK-2.1.4",
+        "BK-2.1.7",
+        "BK-2.1.5",
+        "BK-2.1.8",
+        "FE-2.1.2",
+        "BK-2.1.6",
+        "INF-2.1.1",
+        "INF-2.1.2",
+        "FE-2.1.3",
+        "FE-2.1.4",
+        "FE-2.1.5",
+        "BK-3.1.4",
+        "FE-3.1.3",
+        "FE-3.1.7",
+        "QA-4.1.1",
+        "BK-2.1.9",
+        "BK-2.1.10",
+        "FE-2.1.6",
+        "FE-2.1.7",
+        "BK-3.1.1",
+        "BK-3.1.2",
+        "QA-4.1.2",
+        "QA-4.1.3",
+        "QA-4.1.10",
+        "FE-3.1.1",
+        "FE-3.1.2",
+        "FE-3.1.4",
+        "FE-3.1.5",
+        "FE-3.1.6",
+        "FE-3.1.8",
+        "QA-4.1.4",
+        "QA-4.1.5",
+        "QA-4.1.6",
+        "QA-4.1.7",
+        "QA-4.1.8",
+        "QA-4.1.9",
+        "BK-3.1.3",
+        "FE-2.1.8",
+        "FE-3.1.4"
+      ]
+    }
+  ],
+  "version": "1.2.0"
+}

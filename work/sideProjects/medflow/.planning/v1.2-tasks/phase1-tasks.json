@@ -1,0 +1,376 @@
+{
+  "version": "2.0",
+  "generated": "2026-06-04T00:00:00Z",
+  "source": ".planning/gsd-plan-v1.2.md",
+  "phase": 1,
+  "tasks": [
+    {
+      "id": "v12-INF-1.1.1",
+      "gantt_id": "INF-1.1.1",
+      "title": "Migracion DB: Facility → Sede",
+      "description": "ALTER TABLE facilities RENAME TO sedes. Renombrar columnas relacionadas. Actualizar FKs. Crear migration file en backend/migrations/000XX_rename_facility_to_sede.sql",
+      "assignedTo": "medflow-backend",
+      "agent": "medflow-senior-dev",
+      "status": "pending",
+      "priority": "critical",
+      "estimate": "0.5d",
+      "dependsOn": [],
+      "tags": ["v1.2", "fase-1", "migration", "sede"],
+      "spec": "docs/MedNext v1.2/Especificaciones/Req-01-Sede-PuntoAtencion.md",
+      "acceptance": [
+        "Migration file created and tested",
+        "facilities table renamed to sedes",
+        "All FK constraints updated",
+        "sqlc generate works without errors"
+      ],
+      "graphify": {
+        "communities": ["#1", "#32"],
+        "nodesAffected": "~200"
+      }
+    },
+    {
+      "id": "v12-INF-1.1.2",
+      "gantt_id": "INF-1.1.2",
+      "title": "Migracion DB: ServiceUnit v2 (expand columns)",
+      "description": "ALTER TABLE service_units ADD COLUMN type, capacity, schedule_template, is_shared, resource_ids. Expand from current minimal schema.",
+      "assignedTo": "medflow-backend",
+      "agent": "medflow-senior-dev",
+      "status": "pending",
+      "priority": "critical",
+      "estimate": "0.5d",
+      "dependsOn": [],
+      "tags": ["v1.2", "fase-1", "migration", "service-unit"],
+      "spec": "docs/MedNext v1.2/Especificaciones/Req-01-Sede-PuntoAtencion.md",
+      "acceptance": [
+        "New columns added to service_units",
+        "Default values set for existing rows",
+        "sqlc generate works"
+      ],
+      "graphify": {
+        "communities": ["#32", "#48"],
+        "nodesAffected": "~38"
+      }
+    },
+    {
+      "id": "v12-INF-1.1.3",
+      "gantt_id": "INF-1.1.3",
+      "title": "Migracion DB: Bridge tables (professionals + resources)",
+      "description": "CREATE TABLE service_unit_professionals (service_unit_id, professional_id, role). CREATE TABLE physical_resources (id, name, type, sede_id, quantity). CREATE TABLE service_unit_resources (service_unit_id, resource_id).",
+      "assignedTo": "medflow-backend",
+      "agent": "medflow-senior-dev",
+      "status": "pending",
+      "priority": "critical",
+      "estimate": "0.5d",
+      "dependsOn": [],
+      "tags": ["v1.2", "fase-1", "migration", "bridge"],
+      "spec": "docs/MedNext v1.2/Especificaciones/Req-02-Unidad-Asistencial.md",
+      "acceptance": [
+        "service_unit_professionals table created with M:N FKs",
+        "physical_resources table created",
+        "service_unit_resources bridge table created",
+        "Indexes on FKs"
+      ],
+      "graphify": {
+        "communities": ["#32"],
+        "nodesAffected": "new"
+      }
+    },
+    {
+      "id": "v12-BK-1.1.1",
+      "gantt_id": "BK-1.1.1",
+      "title": "Refactor Facility → Sede (domain + repo + handler + sqlc)",
+      "description": "Rename Facility entity to Sede throughout backend: domain/facility.go → domain/sede.go, repository, usecase, handler, DTOs, routes. Update all references. Use graphify to find all affected nodes (~180 nodes in #32).",
+      "assignedTo": "medflow-backend",
+      "agent": "medflow-backend",
+      "status": "pending",
+      "priority": "high",
+      "estimate": "2d",
+      "dependsOn": ["v12-INF-1.1.1"],
+      "tags": ["v1.2", "fase-1", "refactor", "sede"],
+      "spec": "docs/MedNext v1.2/Especificaciones/Req-01-Sede-PuntoAtencion.md",
+      "acceptance": [
+        "All 'Facility' references renamed to 'Sede' in Go code",
+        "API endpoint changed: /facilities → /sedes",
+        "DTOs updated: FacilityDTO → SedeDTO",
+        "sqlc queries updated",
+        "All existing tests pass"
+      ],
+      "graphify": {
+        "communities": ["#1", "#4", "#32", "#48"],
+        "nodesAffected": "~180"
+      }
+    },
+    {
+      "id": "v12-BK-1.1.2",
+      "gantt_id": "BK-1.1.2",
+      "title": "Expand ServiceUnit domain (38 → full entity)",
+      "description": "Expand ServiceUnit from minimal 38-node implementation: add fields (type, capacity, schedule_template, is_shared), expand repository queries, add usecases (Create, Update, GetBySede, AssignProfessional, AssignResource). Follow Clean Architecture pattern from patient domain.",
+      "assignedTo": "medflow-backend",
+      "agent": "medflow-backend",
+      "status": "pending",
+      "priority": "high",
+      "estimate": "3d",
+      "dependsOn": ["v12-INF-1.1.2"],
+      "tags": ["v1.2", "fase-1", "domain", "service-unit"],
+      "spec": "docs/MedNext v1.2/Especificaciones/Req-01-Sede-PuntoAtencion.md",
+      "acceptance": [
+        "ServiceUnit domain entity has all required fields",
+        "Repository: Create, GetByID, GetBySede, Update, Delete, ListBySede",
+        "UseCase: Create, AssignProfessional, RemoveProfessional, AssignResource",
+        "sqlc queries generated",
+        "Unit tests ≥85% coverage"
+      ],
+      "graphify": {
+        "communities": ["#32", "#48"],
+        "nodesAffected": "~38 → ~150"
+      }
+    },
+    {
+      "id": "v12-BK-1.1.3",
+      "gantt_id": "BK-1.1.3",
+      "title": "Service-Unit-Professionals M:N relationship",
+      "description": "Implement M:N bridge: domain value object ProfessionalAssignment, repository methods (Assign, Unassign, ListByUnit, ListByProfessional), usecase logic for assignment validation.",
+      "assignedTo": "medflow-backend",
+      "agent": "medflow-backend",
+      "status": "pending",
+      "priority": "high",
+      "estimate": "1d",
+      "dependsOn": ["v12-INF-1.1.3", "v12-BK-1.1.2"],
+      "tags": ["v1.2", "fase-1", "domain", "professionals"],
+      "spec": "docs/MedNext v1.2/Especificaciones/Req-02-Unidad-Asistencial.md",
+      "acceptance": [
+        "ProfessionalAssignment value object created",
+        "Repository: Assign, Unassign, ListByUnit, ListByProfessional",
+        "One professional can be in multiple UAs (different schedules)",
+        "Unit tests ≥85%"
+      ]
+    },
+    {
+      "id": "v12-BK-1.1.4",
+      "gantt_id": "BK-1.1.4",
+      "title": "Physical Resources CRUD (laser, salas, instrumentacion)",
+      "description": "Create PhysicalResource domain entity: id, name, type (laser|room|equipment), sede_id, quantity, is_bookable. Repository + usecase + handler + DTOs. Full CRUD.",
+      "assignedTo": "medflow-backend",
+      "agent": "medflow-backend",
+      "status": "pending",
+      "priority": "high",
+      "estimate": "2d",
+      "dependsOn": ["v12-INF-1.1.3"],
+      "tags": ["v1.2", "fase-1", "domain", "resources"],
+      "spec": "docs/MedNext v1.2/Especificaciones/Req-02-Unidad-Asistencial.md",
+      "acceptance": [
+        "PhysicalResource entity + repository + usecase + handler",
+        "CRUD endpoints: GET/POST/PATCH/DELETE /api/v1/sedes/:id/resources",
+        "Resources scoped to Sede",
+        "Unit tests ≥85%"
+      ]
+    },
+    {
+      "id": "v12-BK-1.1.5",
+      "gantt_id": "BK-1.1.5",
+      "title": "Availability Service (conflict detection)",
+      "description": "Core business logic: prevent double-booking of professionals across UAs, prevent double-booking of physical resources. Transactional check before appointment creation. Uses service_unit_professionals + service_unit_resources + appointments.",
+      "assignedTo": "medflow-backend",
+      "agent": "medflow-senior-dev",
+      "status": "pending",
+      "priority": "high",
+      "estimate": "3d",
+      "dependsOn": ["v12-BK-1.1.3", "v12-BK-1.1.4"],
+      "tags": ["v1.2", "fase-1", "business-logic", "availability"],
+      "spec": "docs/MedNext v1.2/Especificaciones/Req-02-Unidad-Asistencial.md",
+      "acceptance": [
+        "CheckProfessionalAvailability(professional_id, start, end) → bool",
+        "CheckResourceAvailability(resource_id, start, end) → bool",
+        "Transactional lock on appointment creation",
+        "Returns conflicting booking if exists",
+        "Unit tests: all conflict scenarios ≥85%"
+      ]
+    },
+    {
+      "id": "v12-BK-1.1.6",
+      "gantt_id": "BK-1.1.6",
+      "title": "API Endpoints: Sede CRUD",
+      "description": "GET /api/v1/sedes, POST /api/v1/sedes, GET /api/v1/sedes/:id, PATCH /api/v1/sedes/:id, DELETE /api/v1/sedes/:id. Scoped by client_id from auth context. Uses pkg/response.",
+      "assignedTo": "medflow-backend",
+      "agent": "medflow-backend",
+      "status": "pending",
+      "priority": "medium",
+      "estimate": "1d",
+      "dependsOn": ["v12-BK-1.1.1"],
+      "tags": ["v1.2", "fase-1", "api", "sede"],
+      "acceptance": [
+        "5 endpoints working with auth middleware",
+        "Responses use response.Success/BadRequest/InternalError",
+        "DTOs match spec",
+        "Integration tests ≥80%"
+      ]
+    },
+    {
+      "id": "v12-BK-1.1.7",
+      "gantt_id": "BK-1.1.7",
+      "title": "API Endpoints: UnidadAsistencial CRUD + relationships",
+      "description": "GET /api/v1/sedes/:sede_id/unidades, POST, PATCH, DELETE. Plus: POST /unidades/:id/professionals (assign), DELETE /unidades/:id/professionals/:pid. Plus: POST /unidades/:id/resources (assign).",
+      "assignedTo": "medflow-backend",
+      "agent": "medflow-backend",
+      "status": "pending",
+      "priority": "medium",
+      "estimate": "1.5d",
+      "dependsOn": ["v12-BK-1.1.2"],
+      "tags": ["v1.2", "fase-1", "api", "service-unit"],
+      "acceptance": [
+        "All endpoints working",
+        "Professional assignment works",
+        "Resource assignment works",
+        "Integration tests ≥80%"
+      ]
+    },
+    {
+      "id": "v12-BK-1.1.8",
+      "gantt_id": "BK-1.1.8",
+      "title": "Backend test suite Phase 1 (≥85%)",
+      "description": "Comprehensive tests for all Phase 1 domain code. Service/usecase ≥85%, repository ≥80%, handler ≥75%. Include conflict detection edge cases.",
+      "assignedTo": "medflow-qa",
+      "agent": "medflow-qa",
+      "status": "pending",
+      "priority": "medium",
+      "estimate": "2d",
+      "dependsOn": ["v12-BK-1.1.5", "v12-BK-1.1.6", "v12-BK-1.1.7"],
+      "tags": ["v1.2", "fase-1", "testing"],
+      "acceptance": [
+        "go test ./... passes",
+        "Coverage report: services ≥85%, repos ≥80%, handlers ≥75%",
+        "Conflict detection edge cases covered"
+      ]
+    },
+    {
+      "id": "v12-INF-1.1.4",
+      "gantt_id": "INF-1.1.4",
+      "title": "Seeds: sedes + UAs + recursos",
+      "description": "Create seed data for testing: 3 sedes, 8 UAs (mixed types), 5 physical resources (laser, sala cirugia, sala rx, consultorio), 10 professionals with assignments.",
+      "assignedTo": "medflow-backend",
+      "agent": "medflow-senior-dev",
+      "status": "pending",
+      "priority": "low",
+      "estimate": "0.5d",
+      "dependsOn": ["v12-INF-1.1.1", "v12-INF-1.1.2", "v12-INF-1.1.3"],
+      "tags": ["v1.2", "fase-1", "seeds"],
+      "acceptance": [
+        "Seed file runnable: go run ./cmd/seed",
+        "Data covers all entity types",
+        "Relationships (M:N) populated"
+      ]
+    },
+    {
+      "id": "v12-FE-1.1.1",
+      "gantt_id": "FE-1.1.1",
+      "title": "Frontend: Modelo Sede (interface + SignalStore)",
+      "description": "Create TypeScript interface Sede, ServiceUnit, PhysicalResource. Create SignalStore for sede state (current sede, list, loading). Follow existing pattern from patient store.",
+      "assignedTo": "medflow-frontend",
+      "agent": "medflow-frontend",
+      "status": "pending",
+      "priority": "medium",
+      "estimate": "0.5d",
+      "dependsOn": ["v12-BK-1.1.6"],
+      "tags": ["v1.2", "fase-1", "frontend", "store"],
+      "spec": "docs/MedNext v1.2/Especificaciones/Req-01-Sede-PuntoAtencion.md",
+      "acceptance": [
+        "Interfaces match backend DTOs",
+        "SignalStore with loadAll, create, update, delete",
+        "Uses ApiService (not HttpClient)"
+      ]
+    },
+    {
+      "id": "v12-FE-1.1.2",
+      "gantt_id": "FE-1.1.2",
+      "title": "Frontend: Admin Sede CRUD component",
+      "description": "Standalone Angular component for sede management. List view + create/edit modal. OnPush change detection. data-testid on all interactive elements. Uses Angular 19 control flow (@if, @for).",
+      "assignedTo": "medflow-frontend",
+      "agent": "medflow-frontend",
+      "status": "pending",
+      "priority": "medium",
+      "estimate": "2d",
+      "dependsOn": ["v12-FE-1.1.1"],
+      "tags": ["v1.2", "fase-1", "frontend", "admin"],
+      "acceptance": [
+        "ListComponent, CreateModal, EditModal",
+        "OnPush + standalone",
+        "data-testid on all buttons/inputs",
+        "Vitest tests"
+      ]
+    },
+    {
+      "id": "v12-FE-1.1.3",
+      "gantt_id": "FE-1.1.3",
+      "title": "Frontend: Admin Unidad Asistencial CRUD",
+      "description": "List filtered by sede, create/edit modal with professional assignment (multi-select) and resource assignment.",
+      "assignedTo": "medflow-frontend",
+      "agent": "medflow-frontend",
+      "status": "pending",
+      "priority": "medium",
+      "estimate": "3d",
+      "dependsOn": ["v12-BK-1.1.7", "v12-FE-1.1.1"],
+      "tags": ["v1.2", "fase-1", "frontend", "admin"],
+      "acceptance": [
+        "List filtered by selected sede",
+        "Create/edit with professional multi-select",
+        "Resource assignment in form",
+        "OnPush + standalone + data-testid",
+        "Vitest tests"
+      ]
+    },
+    {
+      "id": "v12-FE-1.1.4",
+      "gantt_id": "FE-1.1.4",
+      "title": "Frontend: Admin Recursos Fisicos",
+      "description": "CRUD for physical resources (laser, salas, equipos) scoped to sede.",
+      "assignedTo": "medflow-frontend",
+      "agent": "medflow-frontend",
+      "status": "pending",
+      "priority": "low",
+      "estimate": "1.5d",
+      "dependsOn": ["v12-BK-1.1.4"],
+      "tags": ["v1.2", "fase-1", "frontend", "admin"],
+      "acceptance": [
+        "List + create/edit modal",
+        "Resource type selector (laser/room/equipment)",
+        "OnPush + standalone + data-testid"
+      ]
+    },
+    {
+      "id": "v12-FE-1.1.5",
+      "gantt_id": "FE-1.1.5",
+      "title": "Frontend: Selector de Sede en topbar",
+      "description": "Global sede selector dropdown in topbar. Persists to SignalStore. All admin screens filter by selected sede.",
+      "assignedTo": "medflow-frontend",
+      "agent": "medflow-frontend",
+      "status": "pending",
+      "priority": "medium",
+      "estimate": "0.5d",
+      "dependsOn": ["v12-FE-1.1.1"],
+      "tags": ["v1.2", "fase-1", "frontend", "topbar"],
+      "acceptance": [
+        "Dropdown in topbar",
+        "Selection persists in SignalStore",
+        "Reactive: child components respond to sede change"
+      ]
+    },
+    {
+      "id": "v12-FE-1.1.6",
+      "gantt_id": "FE-1.1.6",
+      "title": "Frontend test suite Phase 1 (≥75%)",
+      "description": "Vitest component tests for all Phase 1 components. Coverage ≥75% for components.",
+      "assignedTo": "medflow-qa",
+      "agent": "medflow-qa",
+      "status": "pending",
+      "priority": "medium",
+      "estimate": "1.5d",
+      "dependsOn": ["v12-FE-1.1.2", "v12-FE-1.1.3", "v12-FE-1.1.4"],
+      "tags": ["v1.2", "fase-1", "frontend", "testing"],
+      "acceptance": [
+        "npm test passes",
+        "Component coverage ≥75%",
+        "Critical paths tested"
+      ]
+    }
+  ]
+}
